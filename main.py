@@ -21,7 +21,7 @@ def main():
 
     Player.containers = (updatable, drawable)
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
-    
+
     dt = 0
 
     while True:
@@ -33,6 +33,11 @@ def main():
             obj.update(dt)
 
         screen.fill("black")
+
+        for obj in asteroids:
+            if obj.is_colliding(player):
+                print("Game Over!")
+                return
 
         for obj in drawable:
             obj.draw(screen)
